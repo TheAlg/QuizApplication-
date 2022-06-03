@@ -1,0 +1,22 @@
+<% if(error=='Quiz name exists!') {%>
+    <p style="color:red">Quiz name existe !</p>
+<%}%>
+<form action="/create/format" method="POST">
+    <p>
+        <label for="questionType">Choisissez un type de questions : </label><br />
+        <select name="questionType" id="questionType">
+            <option value="text">Texte</option>
+            <option value="image">Image</option>
+            <option value="audio">Audio</option>
+        </select>
+    </p>
+    <p>
+        <label for="answerType">Choisissez un type de réponses : </label><br />
+        <select name="answerType" id="answerType">
+            <option value="text">Texte</option>
+            <option value="image">Image</option>
+            <option value="audio">Audio</option>
+        </select>
+    </p>
+    <input type="submit">
+</form>

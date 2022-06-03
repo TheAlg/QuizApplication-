@@ -1,0 +1,62 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<div hidden id="disapearingDiv">
+<% for(var element of quizList) { %>
+<p class="disapearingAnswer"><%=element.answer %></p>
+<% } %> 
+</div> 
+<div id="quizAssociationPage">
+    <table id="quizTable">
+        <tr>
+            <td>Questions</td>
+            <td>Réponses</td>
+        </tr>
+        <% for(var element of quizList) { %>
+        <tr>
+            <%
+            if(questionType === 'image') { %>
+                <td class='questions'><img src=<%= element.question %>></td>
+            <% } else if (questionType === 'text') { %>
+                <td class='questions'><%= element.question %></td>
+            <% } else if (questionType === 'audio') { %>
+                <td class='questions'><audio controls src=<%= element.question %>></audio></td> 
+            <% } %>
+            <td class='tdAnswers'></td>
+        </tr>
+        <% } %> 
+    </table>
+
+    <div id="divAnswersAndTitle">
+    <h3 id="titleAnswers">Réponses</h3>
+    <div id="divReponses">
+    <%
+    function shuffle(array) {
+        let currentIndex = array.length,  randomIndex;
+        while (currentIndex != 0) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+            [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
+        }
+        return array;
+    } 
+
+    shuffledList = shuffle(quizList);  
+    for(var element of shuffledList) { 
+        if(answerType === 'text') { %>
+        <button class="answers"><%= element.answer %></button>
+        <% } else if (answerType === 'image') { %>
+        <button class="answers"><img src=<%= element.answer %>></button>
+        <% } else if (answerType === 'audio') { %>
+            <div class="answers"><div class="audioAnswer"><button>Select</button><audio controls src=<%= element.answer %>></audio></div></div>
+        <% }
+    } %>
+
+    </div>
+    </div>
+    <button id="checkAnswers">Valider les réponses</button>
+</div>
+
+<button onclick="location.href='/'">Landing page</button>
+
+<script src="quiz.js"></script>

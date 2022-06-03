@@ -1,0 +1,22 @@
+<div id="landingPage">
+<header>
+   <h1>Site de Quizz</h1>
+</header>
+<h2>Menu</h3>
+
+<h3>Jouer à un quizz :</h3>
+<%
+ for(let quizName of quizNameList) { %>
+   <p><a href='/quiz/all/<%= quizName%>'><%= quizName%></a></p>
+<%}
+%>
+<%
+for(let quizNameSpotify of quizNameListSpotify) { %>
+   <p><a href='/quiz/time/<%= quizNameSpotify%>'><%= quizNameSpotify%></a></p>
+<%}
+%>
+
+<h3>Espace Création de Quizz</h3>
+<h2 class="menuCreation"><a href=/createPage/manual/chooseType>Créer quiz simple</a></h2>
+<h2 class="menuCreation"><a href=/api/spotify>Utiliser API Spotify</a></h2>
+</div>

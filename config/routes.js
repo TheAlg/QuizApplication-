@@ -1,0 +1,54 @@
+/**
+ * Route Mappings
+ * (sails.config.routes)
+ *
+ * Your routes tell Sails what to do each time it receives a request.
+ *
+ * For more information on configuring custom routes, check out:
+ * https://sailsjs.com/anatomy/config/routes-js
+ */
+
+module.exports.routes = {
+
+  /***************************************************************************
+  *                                                                          *
+  * Make the view located at `views/homepage.ejs` your home page.            *
+  *                                                                          *
+  * (Alternatively, remove this and add an `index.html` file in your         *
+  * `assets` directory)                                                      *
+  *                                                                          *
+  ***************************************************************************/
+
+  // '/': { view: 'pages/landingPage' },
+  'GET /': 'QuizController.getLandingPage',
+
+  'GET /quiz/all/:quizName': {controller: 'quiz', action : 'getQuizListAll'},
+  // 'GET /quiz/part/:quizName': {controller: 'quiz', action : 'getQuizListPart'},
+  'GET /quiz/time/:quizName': 'QuizController.getQuizListTime',
+
+  'GET /createPage/manual/chooseType': 'QuizController.getChooseTpye',
+
+  'GET /api/spotify': 'QuizController.getSpotifyApi',
+
+  'POST /create/format': 'CreateQuizController.setFormat',
+  // 'POST /create/manual': 'CreateQuizController.createQuizManual',
+  'POST /create/manualUpload': 'CreateQuizController.createQuizManualUpload',
+  'POST /create/spotifyUpload': 'CreateQuizController.createQuizSpotifyUpload',
+
+  // quiz de database
+  'POST /create/db': 'CreateQuizDBController.createQuizDB',
+
+  
+  /***************************************************************************
+  *                                                                          *
+  * More custom routes here...                                               *
+  * (See https://sailsjs.com/config/routes for examples.)                    *
+  *                                                                          *
+  * If a request to a URL doesn't match any of the routes in this file, it   *
+  * is matched against "shadow routes" (e.g. blueprint routes).  If it does  *
+  * not match any of those, it is matched against static assets.             *
+  *                                                                          *
+  ***************************************************************************/
+
+
+};

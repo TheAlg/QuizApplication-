@@ -1,0 +1,57 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+<section class="container">
+    <div class="section">
+        <form>
+            <input type="hidden" class='hidden_token'>
+
+            <div class="forms">
+                <select id="selected_country" class="option show">
+                    <option value ="fr" >Select country</option>      
+                    <option class ="GBR" value="GBR">Angleterre</option>                    
+                    <option class ="US" value ="US">US</option>                    
+                    <option class ="ES" value ="JP">Japon</option>                    
+                </select>
+            </div>    
+            <div class="btns" >
+                <button type="submit" id="btn_submit" class="button show">Search</button>
+            </div>  
+        </form>  
+    </div>
+            
+    <div class="section">
+        <form id="search">
+            <div>
+                <input type="text" id="query" placeholder="search by query" class="option"></input>
+            </div>
+            <div class="btns">
+                <button type="submit" id="btn_search" class="button show">Search</button>
+            </div>
+        </form>    
+    </div>
+</section>
+<section class="container">
+    <div id ="song_list" class="section">
+        <div class = "song-list">
+        </div>
+        <div class ="btns" id="export_created_list">
+        </div>
+    </div>
+
+    <div class="section ques_details" id = "song-detail">
+    </div>
+
+    <div id="browse" class="section">
+        <div class = "browse_list">
+        </div>
+    </div>
+</section>
+<button onclick="location.href='/'">Landing page</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+    let quizNameListSpotify = '<%- JSON.stringify(quizNameListSpotify) %>';
+</script>

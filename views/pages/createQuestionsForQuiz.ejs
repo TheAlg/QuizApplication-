@@ -1,0 +1,64 @@
+<form id="formCreationQuiz" action="/create/manualUpload" method="post" enctype="multipart/form-data">
+    <h3>Nom de quiz</h3>
+    <input type="text" name="quizName">
+    <div id="formAnswersAndQuestions">
+        <% 
+        var attrValueQuestion = 'value=' + format.questionType
+        var attrValueAnswer = 'value=' + format.answerType
+        if(format.answerType === "text" && format.questionType !== "text") {
+             %>
+            <div id="answersForm">
+                <h3>Réponses</h3>
+            <% for(let i=1; i<21; i++) { %>
+                <p><input type="text" name="answers"></p>
+            <% } %>
+            </div>
+            <div id="questionsForm">
+                <h3>Questions</h3>
+                <% for(let i=1; i<21; i++) { 
+                    if(format.questionType === "image") { %> 
+                    <p><input type="file" name="questions" accept="image/png, image/jpeg"></p>
+                    <% } else { %>
+                        <p><input type="file" name="questions" accept="audio/mp3"></p>
+                    <% } 
+                } %>
+            </div>
+        <% } else { %>
+            <div id="questionsForm">
+                <h3>Questions</h3>
+                <% for(let i=1; i<21; i++) { 
+                    if(format.questionType === "image") { %> 
+                    <p><input type="file" name="questions" accept="image/png, image/jpeg"></p>
+                    <% } else if(format.questionType === "audio") { %>
+                        <p><input type="file" name="questions" accept="audio/mp3"></p>
+                    <% } else { %>
+                        <p><input type="text" name="questions"></p>
+                    <% } 
+                } %>
+            </div>
+            <div id="answersForm">
+                <h3>Réponses</h3>
+                <% for(let i=1; i<21; i++) { 
+                    if(format.answerType === "image") { %> 
+                    <p><input type="file" name="answers" accept="image/png, image/jpeg"></p>
+                    <% } else if(format.answerType === "audio") { %>
+                        <p><input type="file" name="answers" accept="audio/mp3"></p>
+                    <% } else { %>
+                        <p><input type="text" name="answers"></p>
+                    <% } 
+                } %>
+            </div>
+            <% } %>
+    </div>
+        <div hidden>
+        <select name="questionType">
+            <option <%= attrValueQuestion %> selected="selected"></option>
+        </select>
+        </div>
+        <div hidden>
+            <select name="answerType">
+                <option <%= attrValueAnswer %> selected="selected"></option>
+            </select>
+        </div>
+    <input type="submit">
+</form>
